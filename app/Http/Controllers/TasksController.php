@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Task;    // 追加
 class TasksController extends Controller
 {
     /**
@@ -29,7 +29,7 @@ class TasksController extends Controller
     // getでtasks/createにアクセスされた場合の「新規登録画面表示処理」
     public function create()
     {
-        $task = new Message;
+        $task = new Task;
 
         return view('tasks.create', [
             'task' => $task,
@@ -114,7 +114,7 @@ class TasksController extends Controller
     // deleteでtasks/idにアクセスされた場合の「削除処理」
     public function destroy($id)
     {
-        $task = Message::find($id);
+        $task = Task::find($id);
         $task->delete();
 
         return redirect('/');
